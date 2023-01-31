@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+.timer {
+  background-color: aqua;
+  padding: 100px;
+}
+.footer{
+  background-color: blue;
+  padding: 40px;
+}
