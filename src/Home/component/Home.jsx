@@ -1,6 +1,7 @@
 import { useState } from "react";
+import Button from "./Button";
 
-const Home = () => {
+const Home = (props) => {
   const [loader, setLoader] = useState(false);
   const [products, setProducts] = useState([]);
 
@@ -15,12 +16,13 @@ const Home = () => {
     } catch(error) {
         setLoader(false);
     }
-   
   };
 
   return (
-    <div>
-      <button onClick={fetchProduct}>Fetch Data</button>
+    <div  style = {{height:'400px' , width:'500px' , background: 'blue' , margin: 'auto'}}>
+      {/* <button onClick={fetchProduct}>Fetch Data</button> */}
+      <h2>{props.title}</h2>
+     <Button clickHandler={fetchProduct} />
       {loader ? (
         <div>
           <img src="/Loading_icon.gif" />
@@ -29,7 +31,7 @@ const Home = () => {
         products.map((pr) => {
           console.log(pr); //
           return (
-            <div>
+            <div key={pr.id}>
               <h6>{pr.title}</h6>
               <div>
                 <span>Brand::</span> <span>{pr.brand}</span>
@@ -53,3 +55,9 @@ export default Home;
 // Updating  => re-rendering 
  
 // unmouting state
+
+// props  => props immutable props cannot be changed 
+// props are read only 
+// this is used for tranfering data from one component to another component  
+// most of the cases parent to child and it one way binding
+// props are object which is the key value pair wahatever is passed through the parent component that is added as a key value pair on the props object
