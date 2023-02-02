@@ -51,6 +51,7 @@ const Home = (props) => {
 
 export default Home;
 
+
 // Dom =>  HTML dOM  + CSS DOM  => dom => browser painting
 // Updating  => re-rendering 
  

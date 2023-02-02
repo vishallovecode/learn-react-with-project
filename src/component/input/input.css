@@ -1,0 +1,8 @@
+.search-cont {
+width: 30rem;
+}
+.search-input {
+    width: 100%;
+    padding: 15px;
+    border-radius: 10px;
+}

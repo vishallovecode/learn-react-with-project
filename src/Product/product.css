@@ -1,0 +1,9 @@
+.product-cont {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 2rem;
+}
+.loader {
+    margin: auto;
+}

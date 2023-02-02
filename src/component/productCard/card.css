@@ -1,0 +1,21 @@
+.product {
+    display: flex;
+    flex-direction: column;
+    width: 19rem;
+    border-radius: 10px;
+    border: 3px solid #008000;
+    padding: 10px;
+    
+}
+.title {
+    text-align: left;
+    padding: 10px 0px 10px;
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.footer1 {
+    display: flex;
+    justify-content: space-between;
+   
+}

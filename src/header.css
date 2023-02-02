@@ -1,0 +1,9 @@
+.header-items {
+    display: flex;
+    justify-content: space-between;
+
+}
+.header-cont {
+    background: lightgrey; 
+    padding: 10px
+}
