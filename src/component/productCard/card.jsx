@@ -1,12 +1,13 @@
 import Button from "../../Home/component/Button";
 import './card.css'
-const ProductCard = ()=> {
+const ProductCard = (props)=> {
+    const {items} = props;
     return  (
         <div className="product">
-            <img src= 'https://i.dummyjson.com/data/products/1/1.jpg'/>
-            <div className="title">Title</div>
+            <img src= {items.thumbnail} alt = "picture"/>
+            <div className="title">{items.title}</div>
             <div className="footer1">
-                <span>Rupees</span>
+                <span>{"Rs." + items.price}</span>
                 <Button buttonText = "ADD"/>
             </div>
         </div>
