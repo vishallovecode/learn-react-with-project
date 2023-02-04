@@ -1,7 +1,7 @@
+import './button.css';
 const Button  = (props)=>{
-    console.log('PROPS' , props )
     return  (
-        <button onClick={props.clickHandler}>{props.buttonText }</button>
+        <button onClick={props.clickHandler} className= "button">{props.buttonText }</button>
     )
 }
 

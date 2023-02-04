@@ -28,6 +28,15 @@ const Product = () => {
   }, []);
   // empty dependency useEffect most case wwe call the api here , or do the action in first load
 
+  const increment = (e, product) => {
+    e.stopPropagation(); // stopping event bubbling
+    console.log("Adding", product);
+  };
+
+  const productClicked = (product) => {
+    window.location.href = "https://my.newtonschool.co/";
+  };
+
   return (
     <div className="product-cont">
       {loader ? (
@@ -36,8 +45,14 @@ const Product = () => {
         </div>
       ) : (
         products.map((item) => {
-            // item is one product with it details
-          return <ProductCard items  = {item}  />;
+          // item is one product with it details
+          return (
+            <ProductCard
+              product={item}
+              increment={increment}
+              productClicked={productClicked}
+            />
+          );
         })
       )}
     </div>

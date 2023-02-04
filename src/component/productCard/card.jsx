@@ -1,17 +1,19 @@
 import Button from "../../Home/component/Button";
 import './card.css'
 const ProductCard = (props)=> {
-    const {items} = props;
+    const {product , increment , productClicked} = props;
     return  (
-        <div className="product">
-            <img src= {items.thumbnail} alt = "picture"/>
-            <div className="title">{items.title}</div>
+        <div className="product" onClick={()=>productClicked(product)}>
+            <img src= {product.thumbnail} alt = "picture"/>
+            <div className="title">{product.title}</div>
             <div className="footer1">
-                <span>{"Rs." + items.price}</span>
-                <Button buttonText = "ADD"/>
+                <span>{"Rs." + product.price}</span>
+                <Button buttonText = "ADD" clickHandler = {(e)=>increment(e, product)} />
             </div>
         </div>
     )
 }
 
 export default ProductCard;
+
+// triggering by default the browser call that function with event as parameters
