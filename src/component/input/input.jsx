@@ -1,9 +1,10 @@
 
 import './input.css'
 const LInput = (props)=> {
+    const {onchange} = props
     return (
         <div className="search-cont">
-            <input placeholder= {props.title} className = "search-input"/>
+            <input onChange={onchange} placeholder= {props.title} className = "search-input"/>
         </div>
     )
 }

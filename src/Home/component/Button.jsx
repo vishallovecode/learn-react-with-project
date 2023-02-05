@@ -7,7 +7,6 @@ const Button  = (props)=>{
        <div className='button'>
           <span onClick={decrement} className = "span-text">-</span>
         <span className = "span-text">{count}</span>
-
         <span onClick={clickHandler} className = "span-text">+</span>
         </div>}
         </div>

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Button from "./Button";
+import {Link}  from 'react-router-dom';
 
 const Home = (props) => {
   const [loader, setLoader] = useState(false);
@@ -19,32 +20,14 @@ const Home = (props) => {
   };
 
   return (
-    <div  style = {{height:'400px' , width:'500px' , background: 'blue' , margin: 'auto'}}>
-      {/* <button onClick={fetchProduct}>Fetch Data</button> */}
-      <h2>{props.title}</h2>
-     <Button clickHandler={fetchProduct} />
-      {loader ? (
-        <div>
-          <img src="/Loading_icon.gif" />
-        </div>
-      ) : (
-        products.map((pr) => {
-          console.log(pr); //
-          return (
-            <div key={pr.id}>
-              <h6>{pr.title}</h6>
-              <div>
-                <span>Brand::</span> <span>{pr.brand}</span>
-              </div>
-              <div>
-                <span>Price::</span> <span>{pr.price}</span>
-              </div>
-              <a href="/cart" > Unmount
-                </a>
-            </div>
-          );
-        })
-      )}
+    <div  style={{display:'flex' , flexDirection: 'column'}}>
+
+    <Link to  ='/cart'>
+      Cart
+    </Link>
+    <Link to  ='/product'>
+      Product
+    </Link>
     </div>
   );
 };
