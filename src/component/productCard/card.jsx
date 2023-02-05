@@ -4,11 +4,11 @@ const ProductCard = (props)=> {
     const {product , increment , productClicked} = props;
     return  (
         <div className="product" onClick={()=>productClicked(product)}>
-            <img src= {product.thumbnail} alt = "picture"/>
+            <img src= {product.thumbnail} alt = "thumnail"/>
             <div className="title">{product.title}</div>
             <div className="footer1">
                 <span>{"Rs." + product.price}</span>
-                <Button buttonText = "ADD" clickHandler = {(e)=>increment(e, product)} />
+                <Button buttonText = "ADD" count  = {product.count} clickHandler = {(e)=>increment(e, product)} />
             </div>
         </div>
     )

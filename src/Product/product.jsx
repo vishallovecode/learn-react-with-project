@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
 import ProductCard from "../component/productCard/card";
+import Header from "../Header";
 import "./product.css";
 
 const Product = () => {
   const [products, setProducts] = useState([]);
   const [loader, setLoader] = useState(false);
-  // useEffect(()=>{
-  //      // compononentwillmount // before mounting
-  // })
-  // any state change this effect will call
+  const [cartCount , setCartCount] = useState(0);
+
 
   const fetchProductData = async () => {
     setLoader(true);
@@ -30,14 +29,34 @@ const Product = () => {
 
   const increment = (e, product) => {
     e.stopPropagation(); // stopping event bubbling
-    console.log("Adding", product);
+   const updatedProducts = products.map((item)=>{
+      if(item.id == product.id) {
+        return {
+          ...item , 
+          count: (item.count || 0) +1
+        }
+      } else {
+        return item;
+      }
+   })
+   setProducts(updatedProducts);
+    
   };
 
+  const decrement = (e, product) => {
+    e.stopPropagation(); // stopping event bubbling
+
+  }
+
   const productClicked = (product) => {
+    alert("product clicked")
+    console.log(product)
     window.location.href = "https://my.newtonschool.co/";
   };
 
   return (
+    <>
+    <Header cartCount  = {cartCount}/>
     <div className="product-cont">
       {loader ? (
         <div className="loader">
@@ -56,6 +75,7 @@ const Product = () => {
         })
       )}
     </div>
+    </>
   );
 };
 

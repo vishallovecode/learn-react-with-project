@@ -1,17 +1,21 @@
 
 import LInput from './component/input/input';
 import './header.css'
- const Header = () => {
+ const Header = (props) => {
+  const {cartCount} = props; 
   return (
     <div className='header-cont'>
     <header>
       <ul className="header-items">
-        <li>Logo</li>
+        <li >WitViper</li>
         <li>Adress</li>
         {/* We will create this input box as reusable */}
        <LInput title = "Search Products"/>
         <li>Login</li>
-        <li>Cart</li>
+        <li style = {{height:"40px" ,width:"40px"}}>
+          <img src= '/cart.png' height={"100%"} width = {"100%"}/>
+        <div className='count'>{cartCount}</div>
+        </li>
       </ul>
     </header>
     </div>
