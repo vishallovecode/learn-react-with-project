@@ -1,14 +1,14 @@
 import Button from "../../Home/component/Button";
 import './card.css'
 const ProductCard = (props)=> {
-    const {product , increment , productClicked} = props;
+    const {product , increment , productClicked , decrement} = props;
     return  (
         <div className="product" onClick={()=>productClicked(product)}>
             <img src= {product.thumbnail} alt = "thumnail"/>
             <div className="title">{product.title}</div>
             <div className="footer1">
                 <span>{"Rs." + product.price}</span>
-                <Button buttonText = "ADD" count  = {product.count} clickHandler = {(e)=>increment(e, product)} />
+                <Button buttonText = "ADD" count  = {product.count} clickHandler = {(e)=>increment(e, product)} decrement = {(e)=>decrement(e, product)} />
             </div>
         </div>
     )

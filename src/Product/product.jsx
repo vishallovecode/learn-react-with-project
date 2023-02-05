@@ -15,7 +15,13 @@ const Product = () => {
       const res = await fetch("https://dummyjson.com/products");
       const result = await res.json();
       setLoader(false);
+      const productsUpdate =  result.products.map((product)=>{
+        return  {
+          ...product, count: 0
+        }
+      })
       setProducts(result.products);
+      // setProducts(productsUpdate)
     } catch (error) {
       setLoader(false);
       alert("Something went wrong!!! Please try Again!!");
@@ -45,6 +51,17 @@ const Product = () => {
 
   const decrement = (e, product) => {
     e.stopPropagation(); // stopping event bubbling
+    const updatedProducts = products.map((item)=>{
+      if(item.id === product.id) {
+        return {
+          ...item , 
+          count: item.count > 0 ? item.count-1 : 0
+        }
+      } else {
+        return item;
+      }
+   })
+   setProducts(updatedProducts);
 
   }
 
@@ -54,9 +71,21 @@ const Product = () => {
     window.location.href = "https://my.newtonschool.co/";
   };
 
+const getTotalCartCount  = ()=> {
+  const totalCount =  products.reduce((acc, item)=>{
+   if(item.count) {
+    return acc+ item.count;
+   } else {
+    return acc;
+   }
+  
+  }, 0)
+return totalCount
+}
+
   return (
     <>
-    <Header cartCount  = {cartCount}/>
+    <Header cartCount  = {getTotalCartCount()}/>
     <div className="product-cont">
       {loader ? (
         <div className="loader">
@@ -69,6 +98,7 @@ const Product = () => {
             <ProductCard
               product={item}
               increment={increment}
+              decrement= {decrement}
               productClicked={productClicked}
             />
           );

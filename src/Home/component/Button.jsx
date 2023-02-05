@@ -1,11 +1,14 @@
 import './button.css';
 const Button  = (props)=>{
+    const {decrement , clickHandler, count, buttonText} = props;
     return  (
         <div>
-       {!props.count ? <button onClick={props.clickHandler} className= "button">{props.buttonText }</button>:
-       <div>
-        <span>+</span>
-        <span>-</span>
+       {!count ? <button onClick={clickHandler} className= "button">{buttonText }</button>:
+       <div className='button'>
+          <span onClick={decrement} className = "span-text">-</span>
+        <span className = "span-text">{count}</span>
+
+        <span onClick={clickHandler} className = "span-text">+</span>
         </div>}
         </div>
     )
