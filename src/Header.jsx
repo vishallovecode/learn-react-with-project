@@ -1,4 +1,5 @@
 
+import { Link } from 'react-router-dom';
 import LInput from './component/input/input';
 import './header.css'
  const Header = (props) => {
@@ -7,11 +8,12 @@ import './header.css'
     <div className='header-cont'>
     <header>
       <ul className="header-items">
-        <li >WitViper</li>
-        <li>Adress</li>
+        <Link to= "/" >WitViper</Link>
+        <Link to = '/about'>ABOUT</Link>
+        <Link to = '/login'>Login</Link>
+        <Link to = '/contact'>contact</Link>
         {/* We will create this input box as reusable */}
        <LInput title = "Search Products" onchange= {searchProduct} />
-        <li>Login</li>
         <li style = {{height:"40px" ,width:"40px"}}>
           <img src= '/cart.png' height={"100%"} width = {"100%"}/>
         <div className='count'>{cartCount}</div>
