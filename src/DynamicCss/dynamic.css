@@ -3,7 +3,6 @@
     background-color: red;
     display: flex;
     margin: 30px auto 30px auto ;
- 
     width: 300px;
     height: 100px;
 }
@@ -20,3 +19,17 @@
 .flex-column {
     flex-direction: column;
 }
+.justify-content {
+    justify-content: space-around;
+}
+
+
+.margin-auto {
+    margin: auto;
+}
+
+
+    .input {
+        padding: 10px;
+        margin:10px
+    }

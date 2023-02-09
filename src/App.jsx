@@ -11,6 +11,8 @@ import Contact from './Conatct';
 import Header from './Header';
 import Footer from './Footer';
 import DynamicStyle from './DynamicCss/dynamiccss';
+// top level
+// you want to make global css than import css file here
 
 function App() {
   console.log("Code in appps") // this will re-render everytime when the dependecny or statc change
