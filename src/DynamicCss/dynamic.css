@@ -1,6 +1,5 @@
 .box {
     border: 2px solid;
-    background-color: red;
     display: flex;
     margin: 30px auto 30px auto ;
     width: 300px;
@@ -32,4 +31,34 @@
     .input {
         padding: 10px;
         margin:10px
+    }
+
+    .blue {
+        background-color: blue;
+        border: 3px solid red;
+    
+    }
+
+    .yellow {
+        background-color: yellow;
+        border: 3px solid red;
+    
+    }
+
+    .red {
+        background-color: red;
+        border: 3px solid blue;
+    
+    }
+
+    .black {
+        background-color: black;
+        border: 3px solid red;
+    
+    }
+
+    .lightblue {
+        background-color: lightblue;
+        border: 3px solid red;
+    
     }

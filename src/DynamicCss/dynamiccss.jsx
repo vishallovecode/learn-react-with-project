@@ -2,27 +2,22 @@
 import { useState } from 'react';
 import './dynamic.css'
 const DynamicStyle = () => {
-  // dynamically change the box color and its size
+
   const initialStyle = {
-    color: '',
+    color: 'red',
     height: '',
     width: ''
   }
   const [style , setStyle]= useState(initialStyle);
 
   const inputChangeColor = (e)=> {
-  
-    
-    
     setStyle({...style , color: e.target.value})
-
     console.log(style)
   }
   const inputChangeHeight = (e)=> {
-
-    // logic for setting the height
     console.log(e.target.value)
-    setStyle({...style , height: e.target.value})
+    //
+    setStyle({...style , height: e.target.value}) ;
     console.log(style)
   }
 
@@ -36,7 +31,7 @@ const DynamicStyle = () => {
     <div className="flex flex-column conatiner">
       <div  >
         <span>Color:</span>
-        <input  id ='color' className='input' onChange={inputChangeColor}/>
+        <input  id ='color' className='input' onChange={inputChangeColor} value= {style.color}/>
       </div>
       <div  className='margin-auto ' >
         <span>Height</span>
@@ -46,13 +41,17 @@ const DynamicStyle = () => {
         <span>Width</span>
       <input className='input'  id = 'width' onChange={inputChangeWidth}/>
       </div>
-      <div className="box" style={{backgroundColor: style.color}}>
+      <div  className='margin-auto '>
+        <span>Border</span>
+      <input className='input'  id = 'border' onChange={inputChangeWidth}/>
+      </div>
+      <div className= {`box ${style.color}`} style={{ height: style.height , width:style.width}}>
 
       </div>
 
     </div>
   );
 };
-
-
 export default DynamicStyle;
+
+// dynamic style
