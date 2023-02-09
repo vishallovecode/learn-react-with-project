@@ -9,6 +9,8 @@ import Login from './Login';
 import About from './About';
 import Contact from './Conatct';
 import Header from './Header';
+import Footer from './Footer';
+import DynamicStyle from './DynamicCss/dynamiccss';
 
 function App() {
   console.log("Code in appps") // this will re-render everytime when the dependecny or statc change
@@ -23,14 +25,21 @@ function App() {
         <Route path = '/login' element = {<Login/>}/>
         <Route path = '/about' element = {<About/>}/>
         <Route path = '/contact' element = {<Contact/>}/>
+        <Route path = '/dynamicStyle' element = {<DynamicStyle/>}/>
       </Routes>
-      
+      <Footer>
+     <Cart/>
+      </Footer>
+  
       </div>
   )
 
 }
 
 export default App;
+
+// webpack create the bundle of js  , html and css webpack only =understand the js and json 
+
 
 
 

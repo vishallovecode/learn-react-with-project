@@ -8,6 +8,8 @@ class Footer extends Component {
     this.list1 = "List1";
   }
 
+  // this.props
+  // props
   render() {
    let list2 = "Cache";
    let list3 = "Cache1";
@@ -16,11 +18,8 @@ class Footer extends Component {
     return (
       <div className="footer">
         <h3> I am footer</h3>
-        <ul>
-          <li>{this.list1}</li>
-          <li>{list2}</li>
-          <li>{list3}</li>
-        </ul>
+        {this.props.children}
+    
       </div>
     );
   }

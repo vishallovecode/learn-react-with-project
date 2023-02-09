@@ -1,0 +1,22 @@
+.box {
+    border: 2px solid;
+    background-color: red;
+    display: flex;
+    margin: 30px auto 30px auto ;
+ 
+    width: 300px;
+    height: 100px;
+}
+
+.conatiner {
+    display: flex;
+    margin: 100px;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-column {
+    flex-direction: column;
+}
