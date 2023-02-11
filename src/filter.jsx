@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { dropdownList } from "./component/dropdown/constant";
 import DropDown from "./component/dropdown/dropdown"
+import InfoCard from "./infoCard";
 
 const Filter = ()=> {
 const [stateList , setStateList] = useState([]);
 const [selectedState , setSelectedState] = useState([]);
 const [cityList , setCityList] = useState([]);
+const [selectedCity , setSelectedCity] = useState({})
 const [landmark , setLandmarks] = useState([]);
 
 useEffect(()=>{
@@ -23,6 +25,7 @@ useEffect(()=>{
         }
     })
     setCityList(updatedCityList)
+    setSelectedCity(updatedCityList[0])
     setSelectedState(dropdownList[0]) 
     setStateList(updatedDropDown)
 }, [])
@@ -37,6 +40,7 @@ const stateHandler = (e)=> {
         }
     })
     setCityList(updatedCityList)
+    setSelectedCity(updatedCityList[0])
     setSelectedState(stateList[e.target.value]) 
 }
 
@@ -52,6 +56,7 @@ const cityHandler = (e)=>{
         }
     })
     setLandmarks(updatedTowns)
+    setSelectedCity(selectedState.city[cityIndex])
 
 }
 
@@ -59,8 +64,16 @@ const cityHandler = (e)=>{
 
     return (
         <div className="flex flex-column">
+            <div className="flex">
             <DropDown data= {stateList} title = {"State"} dropdownHandler = {stateHandler}/>
+            <InfoCard name = {selectedState.name}  description  = {selectedState.description}/>
+            </div>
+            <div className="flex">
             <DropDown title= {"City"}  data= {cityList} dropdownHandler= {cityHandler}/>
+            <InfoCard name = {selectedCity.name}  description  = {selectedCity.description}/>
+            </div>
+            
+            
             <DropDown  title = {"Towns"}  data = {landmark}/>
         </div>
     )
