@@ -6,6 +6,7 @@ const Filter = ()=> {
 const [stateList , setStateList] = useState([]);
 const [selectedState , setSelectedState] = useState([]);
 const [cityList , setCityList] = useState([]);
+const [landmark , setLandmarks] = useState([]);
 
 useEffect(()=>{
     const updatedDropDown  = dropdownList.map((data , index)=>{
@@ -22,32 +23,51 @@ useEffect(()=>{
         }
     })
     setCityList(updatedCityList)
+    setSelectedState(dropdownList[0]) 
     setStateList(updatedDropDown)
 }, [])
 
 const stateHandler = (e)=> {
-    console.log(stateList[e.target.value])
-    const updatedCityList =  stateList[e?.target?.value]?.city.map((city , index)=>{
+   const index = e.target.value;
+    // e.target.value  => will be id which we have set using index 
+    const updatedCityList =  stateList[index]?.city.map((city , index)=>{
         return {
             ...city , 
             id:index, label: city.name
         }
     })
     setCityList(updatedCityList)
-    setSelectedState(stateList[e.target.value])
+    setSelectedState(stateList[e.target.value]) 
 }
 
+const cityHandler = (e)=>{
+    const cityIndex =  e.target.value;
+    console.log(selectedState.city)
+    console.log( selectedState?.city[cityIndex]);
+    const updatedTowns =  selectedState?.city[cityIndex]?.landmarks?.map((landmark, index)=>{
+        return {
+            ...landmark,
+            id: index, 
+            label: landmark.name
+        }
+    })
+    setLandmarks(updatedTowns)
+
+}
 
 
 
     return (
         <div className="flex flex-column">
             <DropDown data= {stateList} title = {"State"} dropdownHandler = {stateHandler}/>
-            <DropDown title= {"City"}  data= {cityList}/>
-            <DropDown  title = {"Towns"}/>
+            <DropDown title= {"City"}  data= {cityList} dropdownHandler= {cityHandler}/>
+            <DropDown  title = {"Towns"}  data = {landmark}/>
         </div>
     )
 }
 
 
 export default Filter;
+
+
+// 

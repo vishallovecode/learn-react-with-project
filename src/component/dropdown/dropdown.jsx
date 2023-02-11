@@ -1,7 +1,6 @@
 import './dropdown.css'
 const DropDown = (props) => {
-    // const data = [{id:1 , label: "Red"}, {id:2 , label: "Blue"}, {id:3 , label: "Green"}];
-    const {title = "City" , data , dropdownHandler} = props;
+const {title = "City" , data , dropdownHandler} = props;
   return (
     <div className="drop-con flex">
         <div className='title'>{title} :</div>
