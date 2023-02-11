@@ -55,3 +55,12 @@ const DynamicStyle = () => {
 export default DynamicStyle;
 
 // dynamic style
+
+// keys 
+// dom vs virtual dom 
+// how  react work internally
+// react-fiber
+// re-concilation
+// why keys are important
+//  synthetic event
+// how react optimize the performance of website

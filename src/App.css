@@ -46,3 +46,11 @@
   background-color: blue;
   padding: 40px;
 }
+
+
+.flex {
+  display: flex;
+}
+.flex-column {
+  flex-direction: column;
+}

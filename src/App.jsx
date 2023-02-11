@@ -11,6 +11,8 @@ import Contact from './Conatct';
 import Header from './Header';
 import Footer from './Footer';
 import DynamicStyle from './DynamicCss/dynamiccss';
+import DropDown from './component/dropdown/dropdown';
+import Filter from './filter';
 // top level
 // you want to make global css than import css file here
 
@@ -28,10 +30,11 @@ function App() {
         <Route path = '/about' element = {<About/>}/>
         <Route path = '/contact' element = {<Contact/>}/>
         <Route path = '/dynamicStyle' element = {<DynamicStyle/>}/>
+        <Route path = '/filter' element = {<Filter/>}/>
       </Routes>
-      <Footer>
+      {/* <Footer>
      <Cart/>
-      </Footer>
+      </Footer> */}
   
       </div>
   )

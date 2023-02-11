@@ -13,6 +13,7 @@ import './header.css'
         <Link to = '/login'>Login</Link>
         <Link to = '/contact'>contact</Link>
         <Link to = '/dynamicStyle'>Dynamic Style</Link>
+        <Link to = '/filter'>Dropdown Example</Link>
         {/* We will create this input box as reusable */}
        <LInput title = "Search Products" onchange= {searchProduct} />
         <li style = {{height:"40px" ,width:"40px"}}>
