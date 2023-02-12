@@ -9,25 +9,39 @@ const [selectedState , setSelectedState] = useState([]);
 const [cityList , setCityList] = useState([]);
 const [selectedCity , setSelectedCity] = useState({})
 const [landmark , setLandmarks] = useState([]);
+const [selectedLandMarks , setSelectedLandMarks] = useState('')
 
 useEffect(()=>{
     const updatedDropDown  = dropdownList.map((data , index)=>{
         return {
-            ...data, 
+            ...data,
             label: data.name,
-            id :index
+            id: index
         }
     })
+
+    // data  and index =>   
     const updatedCityList =  dropdownList[0]?.city.map((city , index)=>{
         return {
             ...city , 
-            id:index, label: city.name
+            id:index, 
+            label: city.name
         }
     })
+    const updatedLandmarks = updatedCityList[0].landmarks.map((land, index)=> {
+        return {
+            ...land , 
+            label:  land.name, id: index
+        }
+    })
+
+    setLandmarks(updatedLandmarks)
     setCityList(updatedCityList)
-    setSelectedCity(updatedCityList[0])
+    setSelectedCity(updatedCityList[0]) 
     setSelectedState(dropdownList[0]) 
-    setStateList(updatedDropDown)
+    // setting of selected landmarks select by default select the first element from the array
+    setSelectedLandMarks(updatedLandmarks[0])
+    setStateList(updatedDropDown);
 }, [])
 
 const stateHandler = (e)=> {
@@ -72,9 +86,13 @@ const cityHandler = (e)=>{
             <DropDown title= {"City"}  data= {cityList} dropdownHandler= {cityHandler}/>
             <InfoCard name = {selectedCity.name}  description  = {selectedCity.description}/>
             </div>
-            
-            
+            <div className="flex">
+
             <DropDown  title = {"Towns"}  data = {landmark}/>
+            <InfoCard name = {selectedLandMarks.name}  description  = {selectedLandMarks.description}/>
+            </div>
+        
+        
         </div>
     )
 }
@@ -84,3 +102,15 @@ export default Filter;
 
 
 // 
+
+
+
+
+ 
+
+// dropdonw picking the first array object
+
+// state = [~x {name: "visha", city: [{}] , description},{name: "visha", city: [{}] , description}]
+
+
+// {name: "Vishal", city: [{name: "xyz" , landmarks: [{}]} , {name: "xyz" , landmarks: [{}]} ,{name: "xyz" , landmarks: [{}]}]

@@ -1,4 +1,5 @@
-export  const dropdownList = [{
+export  const dropdownList = [
+    {
     name : "Madhya Pradesh",
     description:"Madhya Pradesh, a large state in central India, retains landmarks from eras throughout Indian history.",
     city :[{
@@ -29,7 +30,8 @@ export  const dropdownList = [{
             description:"Little less known city Ajaypur.",
         }]
     }]
-},{
+},
+{
     name : "Jharkhand",
     description:"Jharkhand is a state in eastern India. It's known for its waterfalls, the elegant Jain temples of Parasnath Hill and the elephants and tigers of Betla National Park.",
     city :[{
@@ -63,7 +65,8 @@ export  const dropdownList = [{
             description:"Ideal for conduction major events",
         }]
     }]
-},{
+},
+{
     name : "Assam",
     description:"Assam is a state in northeastern India known for its wildlife, archeological sites and tea plantations. ",
     city :[{
@@ -97,7 +100,8 @@ export  const dropdownList = [{
             description:"Central Market for Tezpur",
         }]
     }]
-},{
+},
+{
     name : "Bihar",
     description:"Bihar is a state in East India, bordering Nepal. It is divided by the River Ganges, which floods its fertile plains. Important Buddhist pilgrimage sites include the Bodhi Tree in Bodhgaya's Mahabodhi Temple, under which the Buddha allegedly meditated.",
     city :[{
@@ -131,5 +135,10 @@ export  const dropdownList = [{
             description:"Famous for its roasted seads market.",
         }]
     }]
-}];
+}
+];
 
+
+
+
+ 
