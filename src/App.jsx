@@ -5,14 +5,14 @@ import {Routes , Route}  from 'react-router-dom';
 import Cart from './Home/component/Cart';
 import Home from './Home/component/Home';
 import ProductDetailPage from './Product/ProductDetails';
-import Login from './Login';
 import About from './About';
 import Contact from './Conatct';
 import Header from './Header';
-import Footer from './Footer';
 import DynamicStyle from './DynamicCss/dynamiccss';
-import DropDown from './component/dropdown/dropdown';
 import Filter from './filter';
+import Register from './Register/register';
+// import Login from './Form/Login';
+import Login from  './Form/Login'
 // top level
 // you want to make global css than import css file here
 
@@ -29,8 +29,12 @@ function App() {
         <Route path = '/login' element = {<Login/>}/>
         <Route path = '/about' element = {<About/>}/>
         <Route path = '/contact' element = {<Contact/>}/>
+
+        <Route path = '/login' element = {<Login/>}/>
+        <Route path = '/register' element = {<Register/>}/>
         <Route path = '/dynamicStyle' element = {<DynamicStyle/>}/>
         <Route path = '/filter' element = {<Filter/>}/>
+     
       </Routes>
       {/* <Footer>
      <Cart/>

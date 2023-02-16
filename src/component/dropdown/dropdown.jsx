@@ -8,7 +8,7 @@ const {title = "City" , data , dropdownHandler} = props;
       {
         data?.map((item)=>{
             return (
-                <option value={item.id}>{item.label}</option>
+                <option value={item.id} >{item.label}</option>
             )
         })
       }

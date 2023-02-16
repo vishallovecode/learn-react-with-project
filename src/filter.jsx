@@ -4,12 +4,28 @@ import DropDown from "./component/dropdown/dropdown"
 import InfoCard from "./infoCard";
 
 const Filter = ()=> {
+
 const [stateList , setStateList] = useState([]);
-const [selectedState , setSelectedState] = useState([]);
+const [selectedState , setSelectedState] = useState([]);  // ??  index?? 
 const [cityList , setCityList] = useState([]);
 const [selectedCity , setSelectedCity] = useState({})
 const [landmark , setLandmarks] = useState([]);
 const [selectedLandMarks , setSelectedLandMarks] = useState('')
+const [data , setData]= useState({
+    city: [],
+    state: [],
+    town: []
+})
+
+const [selectedObj , setSelectedObj] = useState({
+    state: -1,
+    city: -1,
+    town: -1
+})
+
+
+
+// i have stateList  in one object , do i need selectedState ??? 
 
 useEffect(()=>{
     const updatedDropDown  = dropdownList.map((data , index)=>{
@@ -42,6 +58,7 @@ useEffect(()=>{
     // setting of selected landmarks select by default select the first element from the array
     setSelectedLandMarks(updatedLandmarks[0])
     setStateList(updatedDropDown);
+    setData({...data , state: updatedDropDown})
 }, [])
 
 const stateHandler = (e)=> {
@@ -74,16 +91,26 @@ const cityHandler = (e)=>{
 
 }
 
+const manipulateData = (data) => {
+    const updateData = data.map((item)=>{
+        return  {
+            ...item , 
+            label: item.name
+        }
+    })
+    return updateData;
+}
+
 
 
     return (
         <div className="flex flex-column">
             <div className="flex">
-            <DropDown data= {stateList} title = {"State"} dropdownHandler = {stateHandler}/>
+            <DropDown data= {stateList} title = {"State"} dropdownHandler = {stateHandler} />
             <InfoCard name = {selectedState.name}  description  = {selectedState.description}/>
             </div>
             <div className="flex">
-            <DropDown title= {"City"}  data= {cityList} dropdownHandler= {cityHandler}/>
+            <DropDown title= {"City"}  data= {cityList} dropdownHandler= {cityHandler} />
             <InfoCard name = {selectedCity.name}  description  = {selectedCity.description}/>
             </div>
             <div className="flex">
@@ -105,12 +132,3 @@ export default Filter;
 
 
 
-
- 
-
-// dropdonw picking the first array object
-
-// state = [~x {name: "visha", city: [{}] , description},{name: "visha", city: [{}] , description}]
-
-
-// {name: "Vishal", city: [{name: "xyz" , landmarks: [{}]} , {name: "xyz" , landmarks: [{}]} ,{name: "xyz" , landmarks: [{}]}]
