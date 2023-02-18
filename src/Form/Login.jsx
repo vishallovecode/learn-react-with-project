@@ -4,7 +4,15 @@ const Login = () => {
   const [loginData, setLoginData] = useState({
     password: "",
     userName: "",
+    language: "",
   });
+
+
+  const [validat , setValidate] = useState({
+    password:  '',
+    userName: ''
+  });
+
 
   // const  [password , setPassword] = useState('');
   // const  [user_name , setUserName] = useState('');
@@ -24,53 +32,98 @@ const Login = () => {
 
   const loginHandler = (data) => {
     console.log("hey", data);
-    console.log( "Login SuccessFully", loginData.userName,  "   ", loginData.password );
+    console.log(
+      "Login SuccessFully",
+      loginData.userName,
+      "   ",
+      loginData.password,
+      " " + loginData.language
+    );
     alert("Hye");
   };
 
+
+  const validation = () => {
+    if(loginData.password.length>=1 && loginData.password.length<10) {
+      setValidate({...validat , password: 'Password length should be 10'})
+    } else  {
+      setValidate({...validat , password: ''})
+    }
+
+  }
+
   const onChangeHandlerType = (e, type) => {
     setLoginData({ ...loginData, [type]: e.target.value });
+    validation();
+  };
+
+  const submit = (e) => {
+    e.preventDefault();
+    console.log("UserName", e.target.userName.value);
+    console.log("Password", e.target.password.value);
   };
 
   // Uncontrolled
   // Controlled
   return (
-    <div>
-      <form onSubmit={loginHandler}>
-        <input
-          placeholder="UserName"
+    <div className="flex">
+         {/*  Controlled Form */}
+      <form onSubmit={loginHandler} className= 'flex flex-column form'>
+      <input
+          placeholder="UserName" 
+          className="input-field"
           required
           onChange={(e) => onChangeHandlerType(e, "userName")}
           value={loginData.userName}
         />
+        {/* <span className="error">UserName is not Valid</span> */}
+
         <input
           placeholder="Password"
+          className="input-field"
           required
           onChange={(e) => onChangeHandlerType(e, "password")}
           value={loginData.password}
         />
-        <select>
+       {validat.password && <span className="error">Length of Password should be 10</span>}
+        <select onChange={(e)=>onChangeHandlerType(e, 'language')}  className="input-field">
           <option>English</option>
           <option>Hindi</option>
           <option>Marathi</option>
         </select>
 
-        {/* <input placeholder="UserName"  type = 'email'  name = "userName"  onChange={onChangeHandler} value = {loginData.userName}/>
+        <input type="Submit" value={"Login"} className = 'input-field ' disabled= {validat.password}/>
+
+    
+
+      {/* <input placeholder="UserName"  type = 'email'  name = "userName"  onChange={onChangeHandler} value = {loginData.userName}/>
                 <input placeholder="Password"   name = "password" required onChange={onChangeHandler} value= {loginData.password}/> */}
+
+                   
+      </form>
+      {/*  Uncontrolled Form */}
+
+      {/* <form onSubmit={submit}>
+        <input name="userName" placeholder="UserName" />
+        <input name="password" placeholder="Password" />
         <button type="submit" value={"Login"}>
           Submit
         </button>
-      </form>
+      </form> */}
     </div>
   );
 };
 
 export default Login;
 
-// if we want to give key as dynamic key in object put the variable inside the []
+// what ever we did till now is called controlled form component
+// that value of form field will be handle by the react state
 
-let type = "";
 
-const data = {
-  [key]: "LPU",
-};
+
+
+
+
+
+// Controlled and Uncontrolled Form  
+

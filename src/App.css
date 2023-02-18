@@ -57,3 +57,22 @@
 .justify-content-start {
   justify-content:flex-start;
 }
+
+.form {
+  padding: 20px;
+}
+
+.input-field {
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.error {
+  color: red;
+}
+
+.login-btn  {
+  background-color: blue;
+  color: white;
+  border-radius: 5px;
+}
