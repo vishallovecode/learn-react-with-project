@@ -45,17 +45,22 @@ const Login = () => {
 
 
   const validation = (value , type) => {
+
+    // if lenght is less than 10 than 
     if(value.length && value.length<10 && type=== 'password') {
       setValidate({...validat , [type]: 'Password length should be 10'})
     } else  {
       setValidate({...validat , password: ''})
     }
-
-    if(value.length>1 && !value?.includes('@witviper.com') && type==='userName') {
-      setValidate({...validat , [type]: 'User Name should contain @witviper.com '})
-    } else {
-      setValidate({...validat , userName: ''})
+    if( type==='userName') {
+      if(value.length>1 && !value?.includes('@witviper.com')) {
+        setValidate({...validat , [type]: 'User Name should contain @witviper.com '})
+      } else {
+        setValidate({...validat , userName: ''})
+      }
     }
+  
+    
 
   }
 
