@@ -30,8 +30,9 @@ const Login = () => {
     setLoginData({ ...loginData, [e.target.name]: e.target.value });
   };
 
-  const loginHandler = (data) => {
-    console.log("hey", data);
+  const loginHandler = (e) => {
+    
+    e.preventDefault();
     console.log(
       "Login SuccessFully",
       loginData.userName,
@@ -43,18 +44,24 @@ const Login = () => {
   };
 
 
-  const validation = () => {
-    if(loginData.password.length>=1 && loginData.password.length<10) {
-      setValidate({...validat , password: 'Password length should be 10'})
+  const validation = (value , type) => {
+    if(value.length && value.length<10 && type=== 'password') {
+      setValidate({...validat , [type]: 'Password length should be 10'})
     } else  {
       setValidate({...validat , password: ''})
+    }
+
+    if(value.length>1 && !value?.includes('@witviper.com') && type==='userName') {
+      setValidate({...validat , [type]: 'User Name should contain @witviper.com '})
+    } else {
+      setValidate({...validat , userName: ''})
     }
 
   }
 
   const onChangeHandlerType = (e, type) => {
     setLoginData({ ...loginData, [type]: e.target.value });
-    validation();
+    validation(e.target.value, type);
   };
 
   const submit = (e) => {
@@ -76,7 +83,7 @@ const Login = () => {
           onChange={(e) => onChangeHandlerType(e, "userName")}
           value={loginData.userName}
         />
-        {/* <span className="error">UserName is not Valid</span> */}
+    {validat.userName && <span className="error">{validat.userName}</span>}
 
         <input
           placeholder="Password"
@@ -85,14 +92,14 @@ const Login = () => {
           onChange={(e) => onChangeHandlerType(e, "password")}
           value={loginData.password}
         />
-       {validat.password && <span className="error">Length of Password should be 10</span>}
+       {validat.password && <span className="error">{validat.password}</span>}
         <select onChange={(e)=>onChangeHandlerType(e, 'language')}  className="input-field">
           <option>English</option>
           <option>Hindi</option>
           <option>Marathi</option>
         </select>
 
-        <input type="Submit" value={"Login"} className = 'input-field ' disabled= {validat.password}/>
+        <input type="Submit" value={"Login"} className = 'input-field ' disabled= {validat.password || validat.userName}/>
 
     
 
