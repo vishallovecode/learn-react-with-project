@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Login  =()=> {
+
+    const [message , setMessage] = useState('This is the login page')
     return (
         <div>
-            <h2>This is the login page</h2>
+            <h2>{message}</h2>
         </div>
     )
 }

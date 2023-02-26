@@ -10,7 +10,8 @@ const Login = () => {
 
   const [validat , setValidate] = useState({
     password:  '',
-    userName: ''
+    userName: '',
+    language: ''
   });
 
 
@@ -56,7 +57,15 @@ const Login = () => {
       if(value.length>1 && !value?.includes('@witviper.com')) {
         setValidate({...validat , [type]: 'User Name should contain @witviper.com '})
       } else {
-        setValidate({...validat , userName: ''})
+        setValidate({...validat , [type]: ''})
+      }
+    }
+
+    if(type==='language') {
+      if(value!=='Hindi') {
+        setValidate({...validat , [type]: 'For region primary language should be Hindi'})
+      } else {
+        setValidate({...validat , [type]: ''})
       }
     }
   
@@ -98,13 +107,15 @@ const Login = () => {
           value={loginData.password}
         />
        {validat.password && <span className="error">{validat.password}</span>}
-        <select onChange={(e)=>onChangeHandlerType(e, 'language')}  className="input-field">
+        <select onChange={(e)=>onChangeHandlerType(e, 'language')}  className="input-field" placeholder="select the language" value= {loginData.language}>
+        <option>Select Language</option>
           <option>English</option>
           <option>Hindi</option>
           <option>Marathi</option>
         </select>
+ {    validat.language &&  <span className="error">{validat.language}</span>}
 
-        <input type="Submit" value={"Login"} className = 'input-field ' disabled= {validat.password || validat.userName}/>
+        <input type="Submit" value={"Login"} className = 'input-field ' disabled= {(validat.password || validat.userName || validat.language)|| (!loginData.userName ||  !loginData.password || !loginData.language)}/>
 
     
 

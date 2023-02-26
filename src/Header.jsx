@@ -16,11 +16,12 @@ import './header.css'
         <Link to = '/filter'>Dropdown Example</Link>
         <Link to =  '/login'>Login</Link>
         <Link to =  '/register'>Register</Link>
+        <Link to = '/timer'>Stop Watch</Link>
         {/* We will create this input box as reusable */}
        <LInput title = "Search Products" onchange= {searchProduct} />
         <li style = {{height:"40px" ,width:"40px"}}>
           <img src= '/cart.png' height={"100%"} width = {"100%"}/>
-        <div className='count'>{cartCount}</div>
+        <div className='count'>{cartCount?.data?.value}</div>
         </li>
       </ul>
     </header>

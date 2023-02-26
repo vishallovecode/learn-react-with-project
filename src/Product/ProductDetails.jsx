@@ -11,6 +11,7 @@ const ProductDetailPage = (props) => {
     const [loader , setLoader] = useState(false);
     const[productDetails , setProductDetails] = useState({});
 
+
     const fetchProductData = async (id) => {
         setLoader(true);
         try {
@@ -30,11 +31,28 @@ const ProductDetailPage = (props) => {
         if(productId) {
             fetchProductData(productId)
         }
-      } ,[])
-    
+      } ,[productId])
+
+ 
+      const onchangeHanlder = (e)=> {
+        console.log('hey')
+             window.location.pathname = `product/${e.target.value}`
+      }
     return  (
-        <div>
+        <div >
             {loader ? <div>Loading</div> :<ProductCard  product = {productDetails}/>}
+            <h2>
+              {productDetails.title}
+            </h2>
+
+              {productDetails.title}
+            <h3>{productDetails.count}</h3>
+            <select onChange={onchangeHanlder}>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+            </select>
         </div>
     )
 }

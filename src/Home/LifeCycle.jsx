@@ -13,6 +13,8 @@ class LifeCycle extends Component {
   fetchProductData = async () => {
     const state = { ...this.state }; // state reference now it the value copy
     try {
+    
+      this.loader = true; // updating state directly no diff found by the diffing algo b/w the pre-updated cirtual dom and virtual dom
       state.loader = true;
       this.setState(state);
 
@@ -55,6 +57,17 @@ class LifeCycle extends Component {
       this.manipulateProducst(this.state.products);
     }
   }
+
+  shouldComponentUpdate(nexprops , nextstate) {
+    if(nextstate.counter %2===0) {
+      return true;
+    } else {
+      return false;
+    }
+}
+
+
+// if shouldComponentUpdate return the true than only  componentDidUpdate get called and  after  componentDidUpdate render function get called
 
   updateCounter = () => {
     const updatedState = { ...this.state };

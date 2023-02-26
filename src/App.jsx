@@ -13,6 +13,8 @@ import Filter from './filter';
 import Register from './Register/register';
 // import Login from './Form/Login';
 import Login from  './Form/Login'
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
+import TimerContainer from './component/timer';
 // top level
 // you want to make global css than import css file here
 
@@ -20,11 +22,14 @@ function App() {
   console.log("Code in appps") // this will re-render everytime when the dependecny or statc change
   return (
     <div className="App">
-      <Header/>
+      <ErrorBoundary>
+      <Header/> 
+      </ErrorBoundary>
       <Routes>
         <Route path= "/product" element  = { <Product/> }/>
         <Route path= "/cart" element  = {<Cart/>}/>
         <Route path= "/" element  = {<Home/>}/>
+        {/* /product/12334446789 */}
         <Route path= "/product/:productId" element  = {<ProductDetailPage/>}/>
         <Route path = '/login' element = {<Login/>}/>
         <Route path = '/about' element = {<About/>}/>
@@ -34,6 +39,7 @@ function App() {
         <Route path = '/register' element = {<Register/>}/>
         <Route path = '/dynamicStyle' element = {<DynamicStyle/>}/>
         <Route path = '/filter' element = {<Filter/>}/>
+        <Route path = '/timer' element = {<TimerContainer/>}/>
      
       </Routes>
       {/* <Footer>
@@ -47,7 +53,10 @@ function App() {
 
 export default App;
 
-// webpack create the bundle of js  , html and css webpack only =understand the js and json 
+// // webpack create the bundle of js  , html and css webpack only =understand the js and json 
+
+
+
 
 
 
