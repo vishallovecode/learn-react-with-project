@@ -1,10 +1,17 @@
 
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import LInput from './component/input/input';
+import { AppContext } from './context/context';
 import './header.css'
  const Header = (props) => {
   const {cartCount , searchProduct} = props; 
-  return (
+  const {setTheme} = useContext(AppContext)
+
+  const themeHandler = (e) => {
+    setTheme(e.target.value)
+  }
+   return (
     <div className='header-cont'>
     <header>
       <ul className="header-items">
@@ -25,6 +32,12 @@ import './header.css'
         <div className='count'>{cartCount?.data?.value}</div>
         </li>
       </ul>
+   <select onChange={themeHandler}>
+   <option value = {'white'}>Light</option>
+    <option value = {'black'}>Dark</option>
+    <option value = {'red'}>Red</option>
+    <option value = "gray">Gray</option>
+   </select>
     </header>
     </div>
   );

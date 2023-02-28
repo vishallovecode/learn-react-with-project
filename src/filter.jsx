@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { dropdownList } from "./component/dropdown/constant";
 import DropDown from "./component/dropdown/dropdown"
+import { AppContext } from "./context/context";
 import InfoCard from "./infoCard";
 
 const Filter = ()=> {
@@ -101,10 +102,10 @@ const manipulateData = (data) => {
     return updateData;
 }
 
-
+const {theme} = useContext(AppContext)
 
     return (
-        <div className="flex flex-column">
+        <div className="flex flex-column" style={{background: theme}}>
             <div className="flex">
             <DropDown data= {stateList} title = {"State"} dropdownHandler = {stateHandler} />
             <InfoCard name = {selectedState.name}  description  = {selectedState.description}/>

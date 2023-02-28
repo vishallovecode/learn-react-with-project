@@ -1,8 +1,11 @@
+import { useContext } from 'react';
+import { AppContext } from '../../context/context';
 import './dropdown.css'
 const DropDown = (props) => {
 const {title = "City" , data , dropdownHandler} = props;
+
   return (
-    <div className="drop-con flex">
+    <div className="drop-con flex" >
         <div className='title'>{title} :</div>
       <select className="select-cont" onChange={dropdownHandler} placeholder ='select '>
       {
