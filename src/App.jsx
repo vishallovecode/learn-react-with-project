@@ -15,12 +15,23 @@ import Register from './Register/register';
 import Login from  './Form/Login'
 import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 import TimerContainer from './component/timer';
+import Parent from './context/exampleWithoutContext';
+import { createContext } from 'react';
 // top level
 // you want to make global css than import css file here
 
+// context 
+
+export const  AppContext  = createContext();
+
 function App() {
-  console.log("Code in appps") // this will re-render everytime when the dependecny or statc change
+
+const  object = { 
+  isAuthenticate: true,
+  token: 'asvdhgavsghcvsahgcvsgjhdvc'
+}
   return (
+    <AppContext.Provider value = {object}>
     <div className="App">
       <ErrorBoundary>
       <Header/> 
@@ -40,6 +51,7 @@ function App() {
         <Route path = '/dynamicStyle' element = {<DynamicStyle/>}/>
         <Route path = '/filter' element = {<Filter/>}/>
         <Route path = '/timer' element = {<TimerContainer/>}/>
+        <Route path = '/wcontext' element = {<Parent/>}/>
      
       </Routes>
       {/* <Footer>
@@ -47,6 +59,7 @@ function App() {
       </Footer> */}
   
       </div>
+      </AppContext.Provider>
   )
 
 }

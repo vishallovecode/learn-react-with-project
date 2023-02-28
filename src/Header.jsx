@@ -17,6 +17,7 @@ import './header.css'
         <Link to =  '/login'>Login</Link>
         <Link to =  '/register'>Register</Link>
         <Link to = '/timer'>Stop Watch</Link>
+        <Link to = '/wcontext'>WithOut Context</Link>
         {/* We will create this input box as reusable */}
        <LInput title = "Search Products" onchange= {searchProduct} />
         <li style = {{height:"40px" ,width:"40px"}}>
