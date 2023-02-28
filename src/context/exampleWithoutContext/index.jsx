@@ -7,7 +7,7 @@ const Parent  = ()=> {
     return  (
     <Fragment>
         <Parent1 />
-        <Parent2 />
+        <Parent2  message = {"hello"}/>
         </Fragment>
     )
 }

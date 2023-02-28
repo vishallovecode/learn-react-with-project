@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { AppContext } from "../context";
 
 
 
 const Parent1 = (props)=> {
 
+    const {setUserInfo}  = useContext(AppContext);
     useEffect(()=>{
         fetch('https://dummyjson.com/auth/login', {
             method: 'POST',
@@ -17,7 +19,7 @@ const Parent1 = (props)=> {
           })
           .then(res => res.json())
           .then((data)=>{
-            props.setUserAuth(true)
+            setUserInfo(data)
           });
     }, [])
 
