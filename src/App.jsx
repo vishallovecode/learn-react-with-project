@@ -17,7 +17,7 @@ import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 import TimerContainer from './component/timer';
 import Parent from './context/exampleWithoutContext';
 
-import { AppContextProvider } from './context/context';
+import { StoreProvider } from './context/store';
 // top level
 // you want to make global css than import css file here
 
@@ -26,9 +26,8 @@ import { AppContextProvider } from './context/context';
 
 function App() {
 
-
   return (
-    <AppContextProvider >
+    <StoreProvider >
     <div className="App">
       <ErrorBoundary>
       <Header/> 
@@ -56,7 +55,7 @@ function App() {
       </Footer> */}
   
       </div>
-      </AppContextProvider>
+      </StoreProvider>
   )
 
 }

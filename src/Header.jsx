@@ -3,13 +3,14 @@ import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import LInput from './component/input/input';
 import { AppContext } from './context/context';
+import { StoreContext } from './context/store';
 import './header.css'
  const Header = (props) => {
   const {cartCount , searchProduct} = props; 
-  const {setTheme} = useContext(AppContext)
+  const {actions} = useContext(StoreContext)
 
   const themeHandler = (e) => {
-    setTheme(e.target.value)
+    actions.generalActions.updateTheme(e.target.value)
   }
    return (
     <div className='header-cont'>
@@ -44,3 +45,5 @@ import './header.css'
 };
 
 export default Header
+
+

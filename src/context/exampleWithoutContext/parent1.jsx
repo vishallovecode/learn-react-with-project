@@ -1,11 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../context";
+import { StoreContext } from "../store";
 
 
 
 const Parent1 = (props)=> {
 
-    const {setUserInfo}  = useContext(AppContext);
+    const {actions}  = useContext(StoreContext);
     useEffect(()=>{
         fetch('https://dummyjson.com/auth/login', {
             method: 'POST',
@@ -19,7 +20,8 @@ const Parent1 = (props)=> {
           })
           .then(res => res.json())
           .then((data)=>{
-            setUserInfo(data)
+            console.log(data , 'data')
+            actions.generalActions.updateUserInfo(data);
           });
     }, [])
 
