@@ -1,4 +1,4 @@
-import { UPDATE_THEME, UPDATE_USER_INFO } from "./constant";
+import { UPDATE_THEME, UPDATE_USER_INFO ,UPDATE_HEADER_THEME} from "./constant";
 
 export const generalActions = (props) => {
   return {
@@ -7,6 +7,9 @@ export const generalActions = (props) => {
     }, 
     updateTheme: (theme)=> {
         props.dispatch({type:UPDATE_THEME ,theme})
+    },
+    updateHeaderTheme:(value)=>{
+      props.dispatch({type:UPDATE_HEADER_THEME,value})
     }
   };
 };
