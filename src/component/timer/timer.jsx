@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 
 const Timer = (props) => {
-    const [timer , setTimer] = useState(0);
+    // const [timer , setTimer] = useState(0);
+
+    const  [timer , setTimer] = useCounter();
 
     // const [timerId , setTimerId] = useState(null) THIS APPROACH IS NOT OPTIMIZE
     let timeRef = null; // THIS WILL NOT WORK
