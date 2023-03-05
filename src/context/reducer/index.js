@@ -7,6 +7,7 @@ export const generalStates = {
 };
 
 export const generalReducer = (state, action) => {
+  console.log("This is generalReducer" , state , 'action==>' , action)
   switch (action.type) {
     case UPDATE_USER_INFO:
       return {

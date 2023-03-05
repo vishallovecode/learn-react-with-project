@@ -17,6 +17,11 @@ import './header.css'
       a='yellow'
     }
     actions.generalActions.updateHeaderTheme(a)
+    }
+
+  const themeHandler = (e) => {
+    console.log("Theme update 1: " , e.target.value )
+    actions.generalActions.updateTheme(e.target.value)
   }
   
  
@@ -34,6 +39,8 @@ import './header.css'
         <Link to =  '/register'>Register</Link>
         <Link to = '/timer'>Stop Watch</Link>
         <Link to = '/wcontext'>WithOut Context</Link>
+        <Link to = 'state'>UseStateVsUseReducer</Link>
+        <Link to = 'chooks'>CustomHooks</Link>
         {/* We will create this input box as reusable */}
        <LInput title = "Search Products" onchange= {searchProduct} />
         <li style = {{height:"40px" ,width:"40px"}}>

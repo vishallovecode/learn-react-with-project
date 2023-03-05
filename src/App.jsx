@@ -18,6 +18,8 @@ import TimerContainer from './component/timer';
 import Parent from './context/exampleWithoutContext';
 
 import { StoreProvider } from './context/store';
+import UseStateVsUseReducer from './component/useReducervsuseStateexample';
+import CustomHooks from './component/custom-hooks';
 // top level
 // you want to make global css than import css file here
 
@@ -48,6 +50,8 @@ function App() {
         <Route path = '/filter' element = {<Filter/>}/>
         <Route path = '/timer' element = {<TimerContainer/>}/>
         <Route path = '/wcontext' element = {<Parent/>}/>
+        <Route path='state' element= {<UseStateVsUseReducer/>}/>
+        <Route path='chooks' element= {<CustomHooks/>}/>
      
       </Routes>
       {/* <Footer>

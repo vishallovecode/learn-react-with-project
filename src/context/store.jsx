@@ -10,6 +10,7 @@ const StoreProvider = ({ children }) => {
 
     const [state, dispatch] = useReducer(reducer, generalStates);
     const actions = useActions(state, dispatch); // custom hooks
+    console.log('store' , state , "actions==>" , actions)
     return (
         <StoreContext.Provider value={{ state, dispatch, actions }}>
             {children}
