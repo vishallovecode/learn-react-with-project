@@ -1,5 +1,5 @@
 
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import LInput from './component/input/input';
 import { AppContext } from './context/context';
@@ -7,14 +7,26 @@ import { StoreContext } from './context/store';
 import './header.css'
  const Header = (props) => {
   const {cartCount , searchProduct} = props; 
-  const {actions} = useContext(StoreContext)
+  const {actions,state} = useContext(StoreContext)
+
+  const themeHandler1 = (e) => {
+    let a='white'
+    if(!e.target.checked){
+      a='white'
+    }else {
+      a='yellow'
+    }
+    actions.generalActions.updateHeaderTheme(a)
+    }
 
   const themeHandler = (e) => {
     console.log("Theme update 1: " , e.target.value )
     actions.generalActions.updateTheme(e.target.value)
   }
+  
+ 
    return (
-    <div className='header-cont'>
+    <div className='header-cont' style={{background:state.generalStates?.headerTheme}}>
     <header>
       <ul className="header-items">
         <Link to= "/" >WitViper</Link>
@@ -36,12 +48,20 @@ import './header.css'
         <div className='count'>{cartCount?.data?.value}</div>
         </li>
       </ul>
-   <select onChange={themeHandler}>
+   {/* <select onChange={themeHandler}>
    <option value = {'white'}>Light</option>
     <option value = {'black'}>Dark</option>
     <option value = {'red'}>Red</option>
     <option value = "gray">Gray</option>
-   </select>
+   </select> */}
+   <div className='toggleBtn'>
+   <div className="div1">White</div>
+   <label class="switch">
+  <input type="checkbox" onChange={themeHandler1}/>
+  <span class="slider round"></span>
+</label>
+<div className="div1">Yellow</div>
+   </div>
     </header>
     </div>
   );
