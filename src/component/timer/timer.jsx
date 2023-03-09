@@ -1,9 +1,12 @@
 import { useEffect, useRef, useState } from "react";
+import useCounter from "./useCounter";
 
 const Timer = (props) => {
-    // const [timer , setTimer] = useState(0);
+    const [timer , setTimer] = useCounter(12);
+    // useCounter 
 
-    const  [timer , setTimer] = useCounter();
+
+
 
     // const [timerId , setTimerId] = useState(null) THIS APPROACH IS NOT OPTIMIZE
     let timeRef = null; // THIS WILL NOT WORK
@@ -47,11 +50,9 @@ const Timer = (props) => {
 
   return (
     <div>
-
-
       <h2 ref={h2ref}>{timer}</h2>
         <div style = {{padding:'30px'}}>
-      <button onClick={onStop}> Pause</button>
+      <button onClick={onStop}> Pause1234</button>
       <button onClick={startTimer}>Start</button>
       <button onClick={onReset}>Reset</button>
       </div>

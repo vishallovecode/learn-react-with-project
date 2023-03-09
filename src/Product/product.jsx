@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Auth from "../component/auth/auth";
 import ProductCard from "../component/productCard/card";
 import Header from "../Header";
 import "./product.css";
@@ -92,7 +93,7 @@ const searchProduct = (e)=>{
 
   return (
     <>
-    <Header cartCount  = {getTotalCartCount()}  searchProduct= {searchProduct}/>
+    {/* <Header cartCount  = {getTotalCartCount()}  searchProduct= {searchProduct}/> */}
     <div className="product-cont">
       {loader ? (
         <div className="loader">
@@ -119,7 +120,7 @@ const searchProduct = (e)=>{
   );
 };
 
-export default Product;
+export default Auth(Product);
 
 
 

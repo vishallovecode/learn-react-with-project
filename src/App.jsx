@@ -20,6 +20,7 @@ import Parent from './context/exampleWithoutContext';
 import { StoreProvider } from './context/store';
 import UseStateVsUseReducer from './component/useReducervsuseStateexample';
 import CustomHooks from './component/custom-hooks';
+import HocContainerExample from './component/hoc';
 // top level
 // you want to make global css than import css file here
 
@@ -52,6 +53,7 @@ function App() {
         <Route path = '/wcontext' element = {<Parent/>}/>
         <Route path='state' element= {<UseStateVsUseReducer/>}/>
         <Route path='chooks' element= {<CustomHooks/>}/>
+        <Route path='hoc' element= {<HocContainerExample/>}/>
      
       </Routes>
       {/* <Footer>

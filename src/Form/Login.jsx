@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import  {StoreContext}  from '../context/store'
 
 const Login = () => {
   const [loginData, setLoginData] = useState({
@@ -7,6 +8,24 @@ const Login = () => {
     language: "",
   });
 
+  const {actions} = useContext(StoreContext)
+    const LoginHandler = ()=>{
+      fetch('https://dummyjson.com/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          username:  loginData.userName ,  // 'kminchelle',
+          password:  loginData.password // '0lelplR',
+          // expiresInMins: 60, // optional
+        })
+      })
+      .then(res => res.json())
+      .then((data)=>{
+        console.log(data , 'logindata')
+        localStorage.setItem('auth' , data.token) 
+        actions.generalActions.updateUserInfo(data);
+      });
+    }
 
   const [validat , setValidate] = useState({
     password:  '',
@@ -31,35 +50,24 @@ const Login = () => {
     setLoginData({ ...loginData, [e.target.name]: e.target.value });
   };
 
-  const loginHandler = (e) => {
-    
-    e.preventDefault();
-    console.log(
-      "Login SuccessFully",
-      loginData.userName,
-      "   ",
-      loginData.password,
-      " " + loginData.language
-    );
-    alert("Hye");
-  };
+
 
 
   const validation = (value , type) => {
 
     // if lenght is less than 10 than 
-    if(value.length && value.length<10 && type=== 'password') {
-      setValidate({...validat , [type]: 'Password length should be 10'})
-    } else  {
-      setValidate({...validat , password: ''})
-    }
-    if( type==='userName') {
-      if(value.length>1 && !value?.includes('@witviper.com')) {
-        setValidate({...validat , [type]: 'User Name should contain @witviper.com '})
-      } else {
-        setValidate({...validat , [type]: ''})
-      }
-    }
+    // if(value.length && value.length<10 && type=== 'password') {
+    //   setValidate({...validat , [type]: 'Password length should be 10'})
+    // } else  {
+    //   setValidate({...validat , password: ''})
+    // }
+    // if( type==='userName') {
+    //   if(value.length>1 && !value?.includes('@witviper.com')) {
+    //     setValidate({...validat , [type]: 'User Name should contain @witviper.com '})
+    //   } else {
+    //     setValidate({...validat , [type]: ''})
+    //   }
+    // }
 
     if(type==='language') {
       if(value!=='Hindi') {
@@ -89,11 +97,11 @@ const Login = () => {
   return (
     <div className="flex">
          {/*  Controlled Form */}
-      <form onSubmit={loginHandler} className= 'flex flex-column form'>
+     
+     
       <input
           placeholder="UserName" 
           className="input-field"
-          required
           onChange={(e) => onChangeHandlerType(e, "userName")}
           value={loginData.userName}
         />
@@ -106,7 +114,10 @@ const Login = () => {
           onChange={(e) => onChangeHandlerType(e, "password")}
           value={loginData.password}
         />
-       {validat.password && <span className="error">{validat.password}</span>}
+
+        <button onClick={LoginHandler}> Login</button>
+        
+       {/* {validat.password && <span className="error">{validat.password}</span>}
         <select onChange={(e)=>onChangeHandlerType(e, 'language')}  className="input-field" placeholder="select the language" value= {loginData.language}>
         <option>Select Language</option>
           <option>English</option>
@@ -117,13 +128,13 @@ const Login = () => {
 
         <input type="Submit" value={"Login"} className = 'input-field ' disabled= {(validat.password || validat.userName || validat.language)|| (!loginData.userName ||  !loginData.password || !loginData.language)}/>
 
-    
+     */}
 
       {/* <input placeholder="UserName"  type = 'email'  name = "userName"  onChange={onChangeHandler} value = {loginData.userName}/>
                 <input placeholder="Password"   name = "password" required onChange={onChangeHandler} value= {loginData.password}/> */}
 
                    
-      </form>
+
       {/*  Uncontrolled Form */}
 
       {/* <form onSubmit={submit}>

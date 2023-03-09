@@ -21,14 +21,16 @@ import './header.css'
         <Link to = '/about'>ABOUT</Link>
         <Link to = '/login'>Login</Link>
         <Link to = '/contact'>contact</Link>
-        <Link to = '/dynamicStyle'>Dynamic Style</Link>
+        <Link to = '/product'>Product</Link>
+        <Link to = '/hoc'>Hoc</Link>
+        {/* <Link to = '/dynamicStyle'>Dynamic Style</Link>
         <Link to = '/filter'>Dropdown Example</Link>
         <Link to =  '/login'>Login</Link>
         <Link to =  '/register'>Register</Link>
         <Link to = '/timer'>Stop Watch</Link>
         <Link to = '/wcontext'>WithOut Context</Link>
         <Link to = 'state'>UseStateVsUseReducer</Link>
-        <Link to = 'chooks'>CustomHooks</Link>
+        <Link to = 'chooks'>CustomHooks</Link> */}
         {/* We will create this input box as reusable */}
        <LInput title = "Search Products" onchange= {searchProduct} />
         <li style = {{height:"40px" ,width:"40px"}}>
