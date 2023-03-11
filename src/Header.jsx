@@ -36,6 +36,7 @@ import './header.css'
         <Link to = '/product'>Product</Link>
         <Link to = '/hoc'>Hoc</Link>
         <Link to = '/forwardRef'>ForwardRef</Link>
+        <Link to = '/opt'>Optimization</Link>
         {/* <Link to = '/dynamicStyle'>Dynamic Style</Link>
         <Link to = '/filter'>Dropdown Example</Link>
         <Link to =  '/login'>Login</Link>

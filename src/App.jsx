@@ -22,6 +22,8 @@ import UseStateVsUseReducer from './component/useReducervsuseStateexample';
 import CustomHooks from './component/custom-hooks';
 import HocContainerExample from './component/hoc';
 import ParentForwardRef from './component/forwarRef/parent1';
+import Modal from './component/portal/Modal';
+import Optimization from './component/optimization';
 // top level
 // you want to make global css than import css file here
 
@@ -35,6 +37,7 @@ function App() {
     <div className="App">
       <ErrorBoundary>
       <Header/> 
+      <Modal/>
       </ErrorBoundary>
       <Routes>
         <Route path= "/product" element  = { <Product/> }/>
@@ -56,6 +59,7 @@ function App() {
         <Route path='chooks' element= {<CustomHooks/>}/>
         <Route path='hoc' element= {<HocContainerExample/>}/>
         <Route path='forwardRef' element= {<ParentForwardRef/>}/>
+        <Route path='opt' element= {<Optimization/>}/>
 
      
       </Routes>
