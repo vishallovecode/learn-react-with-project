@@ -1,7 +1,15 @@
 import React from "react";
+import useFetch from "./hooks/useFetch";
 
 const About  = () => {
-    return <h2>This is the About Page</h2>
+    const  [data, setData , callApi] = useFetch();
+    console.log(data)
+    return (
+        <div>
+            <span>{data?.title}</span>
+                <button onClick={()=>callApi("https://jsonplaceholder.typicode.com/todos/1")}>Call Api</button>
+        </div>
+    )
 }
 
 export default About;

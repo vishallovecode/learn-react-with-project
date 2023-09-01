@@ -1,4 +1,5 @@
-import { useRef, useState } from "react";
+
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { flushSync } from 'react-dom'
 import Child from "./child";
 
@@ -14,6 +15,7 @@ const [c7, setC7]= useState(0);
 const [name  , setName] = useState('')
 
 const updateState = ()=>{
+
   flushSync(()=>{
     setC1((c1)=>c1+1)
   }) 
@@ -29,7 +31,28 @@ const updateState = ()=>{
 
 const nameUpdate =()=> {
     setName("Vishal")
+
 }
+
+
+
+
+// useMemo  => it is used to memoized value 
+
+// useCallback => it is used to memoize the functions reference itself
+const displayName  =  useMemo(()=>{
+        return `${c4==3 ? name+'heyc4': name}`
+        // big calcualtions it taking longer time
+        //  meoize
+}, [name , c4])
+
+
+// refernce of the functions
+const cacheFunctions  = useCallback((id)=>{
+    console.log('cache functions' ,id);
+} ,[name])
+
+
 ref.current = ref.current +1;
 console.log('render' ,ref.current)
 return (
@@ -38,10 +61,11 @@ return (
     <button onClick={updateState}>
         update
     </button>
-    <Child counter  = {name}/>
+    <Child counter  = {displayName}/>
     <button onClick={nameUpdate}>Child State Update</button>
 </div>
 )
 }
 
 export default Optimization;
+

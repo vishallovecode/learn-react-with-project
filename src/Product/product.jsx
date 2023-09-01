@@ -4,11 +4,14 @@ import ProductCard from "../component/productCard/card";
 import Header from "../Header";
 import "./product.css";
 
-const Product = () => {
+import { connect } from "react-redux";
+import { updateListData } from "../Reedux/actions";
+
+const Product = (props) => {
   const [products, setProducts] = useState([]);
-  const [filteredProducts , setFilteredProducts] = useState([])
+  const [filteredProducts, setFilteredProducts] = useState([]);
   const [loader, setLoader] = useState(false);
-  const [cartCount , setCartCount] = useState(0);
+  const [cartCount, setCartCount] = useState(0);
 
   const fetchProductData = async () => {
     setLoader(true);
@@ -16,13 +19,15 @@ const Product = () => {
       const res = await fetch("https://dummyjson.com/products");
       const result = await res.json();
       setLoader(false);
-      const productsUpdate =  result.products.map((product)=>{
-        return  {
-          ...product, count: 0
-        }
-      })
+      const productsUpdate = result.products.map((product) => {
+        return {
+          ...product,
+          count: 0,
+        };
+      });
       setProducts(result.products);
-      setFilteredProducts(result.products)
+      setFilteredProducts(result.products);
+      props.updateListData(result.products);
       // setProducts(productsUpdate)
     } catch (error) {
       setLoader(false);
@@ -37,117 +42,112 @@ const Product = () => {
 
   const increment = (e, product) => {
     e.stopPropagation(); // stopping event bubbling
-   const updatedProducts = products.map((item)=>{
-      if(item.id === product.id) {
+    const updatedProducts = products.map((item) => {
+      if (item.id === product.id) {
         return {
-          ...item , 
-          count: (item.count || 0) +1
-        }
+          ...item,
+          count: (item.count || 0) + 1,
+        };
       } else {
         return item;
       }
-   })
-   setProducts(updatedProducts);
-    
+    });
+    setProducts(updatedProducts);
   };
 
   const decrement = (e, product) => {
     e.stopPropagation(); // stopping event bubbling
-    const updatedProducts = products.map((item)=>{
-      if(item.id === product.id) {
+    const updatedProducts = products.map((item) => {
+      if (item.id === product.id) {
         return {
-          ...item , 
-          count: item.count > 0 ? item.count-1 : 0
-        }
+          ...item,
+          count: item.count > 0 ? item.count - 1 : 0,
+        };
       } else {
         return item;
       }
-   })
-   setProducts(updatedProducts);
-
-  }
-
-  const productClicked = (product) => {
-    alert("product clicked")
-    console.log(product)
-    window.location.href = `/product/${product.id}`
+    });
+    setProducts(updatedProducts);
   };
 
-const getTotalCartCount  = ()=> {
-  const totalCount =  products.reduce((acc, item)=>{
-   if(item.count) {
-    return acc+ item.count;
-   } else {
-    return acc;
-   }
-  
-  }, 0)
-return totalCount
-}
+  const productClicked = (product) => {
+    try {
+      window.location.href = `/product/${product.name.hello}`;
+    } catch (error) {
+      // show erro ui
+      console.log(error);
+    }
+  };
 
-const searchProduct = (e)=>{
-  const filterProducts = products.filter((item)=> item.title.toLowerCase().includes(e.target.value.toLowerCase()));
-  setFilteredProducts(filterProducts)
-  
-}
+  const getTotalCartCount = () => {
+    const totalCount = products.reduce((acc, item) => {
+      if (item.count) {
+        return acc + item.count;
+      } else {
+        return acc;
+      }
+    }, 0);
+    return totalCount;
+  };
+
+  const searchProduct = (e) => {
+    const filterProducts = products.filter((item) =>
+      item.title.toLowerCase().includes(e.target.value.toLowerCase())
+    );
+    setFilteredProducts(filterProducts);
+  };
 
   return (
     <>
-    {/* <Header cartCount  = {getTotalCartCount()}  searchProduct= {searchProduct}/> */}
-    <div className="product-cont">
-      {loader ? (
-        <div className="loader">
-          <img src="/Loading_icon.gif" alt="loader"/>
-        </div>
-      ) : (
-        filteredProducts.length ? filteredProducts?.map((item) => {
-          // item is one product with it details
-          return (
-            <ProductCard
-              key = {item.id}
-              product={item}
-              increment={increment}
-              decrement= {decrement}
-              productClicked={productClicked}
-             
-            />
-          );
-        })
-        :<div>No result found</div>
-      )}
-    </div>
+      {/* <Header cartCount  = {getTotalCartCount()}  searchProduct= {searchProduct}/> */}
+      <div className="product-cont">
+        {loader ? (
+          <div className="loader">
+            <img src="/Loading_icon.gif" alt="loader" />
+          </div>
+        ) : filteredProducts.length ? (
+          filteredProducts?.map((item) => {
+            // item is one product with it details
+            return (
+              <ProductCard
+                key={item.id}
+                product={item}
+                increment={increment}
+                decrement={decrement}
+                productClicked={productClicked}
+              />
+            );
+          })
+        ) : (
+          <div>No result found</div>
+        )}
+      </div>
     </>
   );
 };
 
-export default Auth(Product);
+export default Product;
 
+// React-dom => MOSTLY THIS WILL PLAY WITH BROWSER AND DOM
 
-
-// React-dom => MOSTLY THIS WILL PLAY WITH BROWSER AND DOM 
-
-// Router 
-// React-dom 
-// Performance 
+// Router
+// React-dom
+// Performance
 // Hooks useCallback , useMemo
 // Pure components
 // React.memo
-// useContext 
+// useContext
 // useRef
-// useReducer 
+// useReducer
 // reconcilation
-// react-fiber 
-// differ algorithm 
-// react.createElement 
-// why key needed in  list 
-// custom hooks  
-// Higher order components  
+// react-fiber
+// differ algorithm
+// react.createElement
+// why key needed in  list
+// custom hooks
+// Higher order components
 // Authorization protected route
-// Redux  
-// Redux saga 
+// Redux
+// Redux saga
 // SPA
-// 
-
-
-
-
+//

@@ -1,13 +1,19 @@
-import { UPDATE_THEME, UPDATE_USER_INFO ,UPDATE_HEADER_THEME} from "../actions/constant";
+import {
+  UPDATE_THEME,
+  UPDATE_USER_INFO,
+  UPDATE_HEADER_THEME,
+} from "../actions/constant";
+
+// INITIAL STORE AND VALUE
 
 export const generalStates = {
-  theme: 'black',
+  theme: "black",
   userInfo: {},
-  headerTheme:'white'
+  headerTheme: "white",
 };
 
 export const generalReducer = (state, action) => {
-  console.log("This is generalReducer" , state , 'action==>' , action)
+  console.log("This is generalReducer", state, "action==>", action);
   switch (action.type) {
     case UPDATE_USER_INFO:
       return {

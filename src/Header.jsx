@@ -26,7 +26,7 @@ import './header.css'
   
  
    return (
-    <div className='header-cont' style={{background:state.generalStates?.headerTheme}}>
+    <div className='header-cont'>
     <header>
       <ul className="header-items">
         <Link to= "/" >WitViper</Link>
